@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
+    
     <title>Clima App</title>
 </head>
 <body>
@@ -13,34 +14,98 @@
     </header>
     <section class="principal">
         <div class="columna">
-            <div class="row">1</div>
-            <div class="row">2</div>
-            <div class="row">3</div>
+            <div class="row">
+                <input type="text" name="buscar" id="inputValor" placeholder="Search for places ...">
+                
+            </div>
+            <div class="row">
+                <img src="/imagen/sol.png" alt="">
+                <p><h3 id="temperatura">12 C</h3></p>
+            </div>
+            <div class="row1">
+                <p id="city">Arroyo</p>
+                
+            </div>
         </div>
         <div class="columnacentral">
-            <div><h4>Week</h4></div>
+            <div>
+                <h4>Week</h4>
+                
+            </div>
             <div class="fila1">
-                <div class="columnas">Sun</div>
-                <div class="columnas">Mon</div>
-                <div class="columnas">Tue</div>
-                <div class="columnas">Wed</div>
-                <div class="columnas">Thu</div>
-                <div class="columnas">Fri</div>
-                <div class="columnas">Sat</div>
+                <div class="columnas">
+                    <h4 id="cel1">Sun</h4>
+                    <img src="/imagen/viento.png"  class="imgdias"alt="">
+                    <h5>Temp</h5>
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                    <h4 id="cel1">Mon</h4>
+                    <img src="/imagen/sol.png"  class="imgdias"alt="">
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                    <h4 id="cel1">Tue</h4>
+                    <img src="/imagen/nublado.png"  class="imgdias"alt="">
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                    <h4 id="cel1">Wed</h4>
+                    <img src="/imagen/lluvia.png"  class="imgdias"alt="">
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                    <h4 id="cel1">Thu</h4>
+                    <img src="/imagen/viento.png"  class="imgdias"alt="">
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                    <h4 id="cel1">Fri</h4>
+                    <img src="/imagen/nubulluvia.jpg"  class="imgdias"alt="">
+                    <p>78</p>
+                </div>
+                <div class="columnas">
+                   <h4 id="cel1">Sat</h4>
+                   <img src="/imagen/sol.png"  class="imgdias"alt="">
+                   <p>78</p>
+                </div>
             </div>
             <div><h4>Today's Holidays</h4></div>
             <div class="fila2">
-                <div id="celda">UV Index</div>
-                <div id="celda">Wind Status</div>
-                <div id="celda">Sunrise and Sunset</div>
+                <div id="celda"><h4 id="cel1">UV Index</h4>
+                    <img src="/imagen/uv.png" alt="">
+                    <p id="UV">450 </p>
+                </div>
+                <div id="celda"><h4 id="cel1">Wind Status</h4>
+                    <img src="/imagen/viento.jpg" alt="">
+                    <p id="viento">450 </p>
+                </div>
+                <div id="celda"><h4 id="cel1">Sunrise and Sunset</h4>
+                    <div>
+                        <img src="/imagen/sol.png" class="sol" alt="">
+                        <p id="sunsire">Sunrise 400</p> 
+                    </div>
+                    
+                    <img src="/imagen/sol.png" class="sol" alt="">
+                    <p id="sunset">Sunset 400</p>
+                </div>
              </div>
              <div class="fila3">
-                <div id="celda">Humidity</div>
-                <div id="celda">Visibility</div>
-                <div id="celda">Air Quality</div>
+                <div id="celda"><h4 id="cel1">Humidity</h4>
+                    <img src="/imagen/humedad.png" alt="">
+                    <p id="humedad">450 </p>
+                </div>
+                <div id="celda"><h4 id="cel1">Visibility</h4>
+                    <img src="/imagen/visibilidad.png" alt="">
+                    <p id="visibilidad">450 </p>
+                </div>
+                <div id="celda"><h4 id="cel1">Air Quality</h4>
+                    <img src="/imagen/aire.png" alt="">
+                    <p id="aire">450 </p>
+                </div>
              </div>
         </div>
     </section>
-     
+    <script src="app.js"></script> 
 </body>
 </html>

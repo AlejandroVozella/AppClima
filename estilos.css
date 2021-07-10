@@ -47,7 +47,7 @@ h1 {
 }
 
 .row1 {
-    background-image: url('../imagen/ciudad.jpg');
+    background-image: url('./imagen/ciudad.jpg');
     border-radius: 10px;
     height: 100px;
     margin-top: auto;

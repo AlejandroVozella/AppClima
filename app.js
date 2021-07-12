@@ -24,7 +24,7 @@ const a = 'http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d
  })*/
 
 function climaActual() {
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=Rosario&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Rosario&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
     .then(Response => Response.json())
     .then (data => {
         console.log(data);

@@ -14,7 +14,7 @@ var visibilidad=document.querySelector('#visibilidad');
 
 boton.addEventListener('click',climaActual())
 
-const a = 'http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d3e788ed20e6df81b683111a2243'
+/*const a = 'http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d3e788ed20e6df81b683111a2243'*/
 
 /*console.log(a)*/
 /*fetch('http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d3e788ed20e6df81b683111a2243')

@@ -10,18 +10,11 @@ var sunrise=document.querySelector('#sunrise');
 var sunset=document.querySelector('#sunset');
 var humedad =document.querySelector('#humedad');
 var visibilidad=document.querySelector('#visibilidad');
-/* var fecha =document.querySelector('#fechaActual');*/
+
 
 boton.addEventListener('click',climaActual())
 
-/*const a = 'http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d3e788ed20e6df81b683111a2243'*/
 
-/*console.log(a)*/
-/*fetch('http://api.openweathermap.org/data/2.5/forecast?q=Rosario&appid=2a46d3e788ed20e6df81b683111a2243')
- .then(Response =>Response.json())
- .then (data => {
-     console.log(data)
- })*/
 
 function climaActual() {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Rosario&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
@@ -68,11 +61,6 @@ function climaActual() {
         presion.innerHTML=ParametroPresion+'Hpa'
         lluvia.innerHTML=ParametroLLuvia+'%'
         ciudad.innerHTML=ParametroCiudad +','+ ParametroPais
-        var conversion=ParamentroNubosidad
-        var primeraMayusculas=conversion.substring(0,1);
-        primeraMayusculas=primeraMayusculas.toLocaleUpperCase();
-        console.log(primeraMayusculas)
-        var TodasMinusculas=
         nuvosidad.innerHTML=ParamentroNubosidad;
         fecha.innerHTML=ParametroFecha;
     })
@@ -80,6 +68,36 @@ function climaActual() {
 }
 
 
-    
+fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=-32.94&lon=-60.63&daily&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
+ .then (Response=>Response.json())
+ .then (data => {
+     console.log(data)
+
+     var ArrayDay=data.daily;
+
+     console.log (ArrayDay)
+
+     console.log (data.daily[0].temp.day)
+     console.log (data.daily[1].temp.day)
+     console.log (data.daily[2].temp.day)
+     console.log (data.daily[3].temp.day)
+     console.log (data.daily[4].temp.day)
+     console.log (data.daily[5].temp.day)
+     console.log (data.daily[6].temp.day)
+
+     gradoss.innerHTML=data.daily[0].temp.day+'°C'
+     gradosm.innerHTML=data.daily[1].temp.day+'°C'
+     gradost.innerHTML=data.daily[2].temp.day+'°C'
+     gradosw.innerHTML=data.daily[3].temp.day+'°C'
+     gradosth.innerHTML=data.daily[4].temp.day+'°C'
+     gradosf.innerHTML=data.daily[5].temp.day+'°C'
+     gradossa.innerHTML=data.daily[6].temp.day+'°C'
+
+     ArrayDay.forEach(function(valor,indice,ArrayDay) {
+         console.log(valor , indice);
+         
+     });
+     
+ })   
 
 

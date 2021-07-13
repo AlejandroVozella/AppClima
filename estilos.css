@@ -22,6 +22,22 @@ h5,h6 {
     float: left;
 }
 
+ul li {
+    display: inline-block;
+    padding: 0px;
+    text-decoration: none;
+    text-decoration-color: black;
+    color: gray;
+    
+}
+
+ul li a {
+    margin-left: 0px;
+    font-size: 5px;
+    
+
+}
+
 .principal {
     display: flex;
     width: 830px;
@@ -43,9 +59,6 @@ h5,h6 {
     width: 100px;
 }
 
-#btn-buscar {
-   
-}
 .row {
     width: 200px;
     height: 150px;

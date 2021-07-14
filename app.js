@@ -25,10 +25,23 @@ function climaActual() {
         console.log(ParametoTemp);
         var ParametroViento=data.list[0].wind.speed;
         console.log(ParametroViento);
+
+        /*Comienzo Amanecer*/
         var ParametroAmanecer=data.city.sunrise;
+        var AmanecerFecha=new Date(ParametroAmanecer*1000)
+        var AmanecerHora=AmanecerFecha.getHours();
+        var AmanecerMinutos=AmanecerFecha.getMinutes();
         console.log (ParametroAmanecer)
+        /*Fin Amanecer*/
+
+        /*Comienzo Atardecer*/
         var ParametroAtardecer=data.city.sunset;
+        var AFecha=new Date(ParametroAtardecer*1000)
+        var AtardecerHora=AFecha.getHours();
+        var AtardecerMinutos=AFecha.getMinutes();
         console.log(ParametroAtardecer)
+        /*Fin Atardecer*/
+
         var ParametroHumedad=data.list[0].main.humidity;
         console.log(ParametroHumedad)
         var ParametroVisibilidad=data.list[0].visibility;
@@ -58,8 +71,8 @@ function climaActual() {
 
         temperatura.innerHTML=ParametoTemp+'°C';
         viento.innerHTML=ParametroViento+'Km/h'
-        amanecer.innerHTML=ParametroAmanecer+'AM'
-        sunset.innerHTML=ParametroAtardecer+'PM'
+        amanecer.innerHTML=AmanecerHora+':'+AmanecerMinutos+' AM';
+        sunset.innerHTML=AtardecerHora+':'+AtardecerMinutos+' PM';
         humedad.innerHTML=ParametroHumedad+'%'
         visibilidad.innerHTML=ParametroVisibilidad/1000+'Km';
         presion.innerHTML=ParametroPresion+'Hpa'

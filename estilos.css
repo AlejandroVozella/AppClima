@@ -152,12 +152,17 @@ ul li a {
     font-weight: bold;
 }
 
-#cel1  ,#temperatura{
-    margin:0px;
+#cel1 {
+    margin-top:5px;
     
 }
 
+#cel3 {
+    margin: 0px;
+}
+
 #temperatura {
+    margin: 0px;
     font-size: 20px;
     
 }
@@ -170,7 +175,7 @@ ul li a {
 #fecha , #lluvia , #nuvosidad {
     font-size: 10px;
     
-    
+
 }
 
 img {
@@ -195,6 +200,11 @@ img {
 }
 .sol {
     width: 10%;
+    float: left;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    
    
 }
 

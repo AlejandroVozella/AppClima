@@ -1,0 +1,70 @@
+const fechaComoCadena = "2021-07-14 12:00:00"; // día lunes
+ const dias = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+
+const numeroDia = new Date(fechaComoCadena).getDay();
+const nombreDia = dias[numeroDia];
+console.log("Nombre de día de la semana: ", nombreDia);
+
+
+var Xmas95 = new Date('2021-07-14 12:00:00');
+var hours = Xmas95.getHours();
+
+console.log(hours); // 23
+
+var Xmas951 = new Date('2021-07-14 12:00:00');
+var minutos = Xmas951.getMinutes();
+
+console.log(minutos); // 15
+
+const moonLanding = new Date('2021-07-14 12:00:00');
+
+console.log(moonLanding.getSeconds());
+// expected output: 18
+
+console.log (nombreDia+' '+hours+':'+minutos+0)
+
+
+/*fecha y hora amanecer y atardecer*/
+
+var amanecerValor = data.city.sunrise;
+        var atardecerValor = data.city.sunset;
+        var amanecerFecha = new Date(amanecerValor * 1000);
+        var amanecerHora = amanecerFecha.getHours();
+        var amanecerMinutos = amanecerFecha.getMinutes();
+        var atardecerFecha = new Date(atardecerValor * 1000);
+        var atardecerHora = atardecerFecha.getHours();
+        var atardecerMinutos = atardecerFecha.getMinutes();
+
+        var humedadValor = data.list[0].main.humidity;
+        var visibilidadValor = data.list[0].visibility;
+        
+        var fechaValor = data.list[0].dt;
+        var date = new Date(fechaValor * 1000);
+        var dia = date.getDate();
+        var mes = date.getMonth()+1;
+        var año = date.getFullYear();
+        var lat = data.city.coord.lat;
+        var lon = data.city.coord.lon;
+
+        grados.innerHTML = gradosValor + '°C';
+        clima.innerHTML = climaValor;
+        viento.innerHTML = vientoValor + ' km/h';
+        amanecer.innerHTML = amanecerHora +':'+ amanecerMinutos +' AM';
+        atardecer.innerHTML = atardecerHora +':'+ atardecerMinutos +' PM';
+        humedad.innerHTML = humedadValor + '%';
+        visibilidad.innerHTML = visibilidadValor + ' m';
+        fecha.innerHTML = dia +'-'+ mes +'-'+ año;
+        climaFuturo(lat, lon);
+    })
+
+.catch(error => alert("No existe la ciudad o no se encuentra registrado en la API"));
+}

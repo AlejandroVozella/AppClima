@@ -51,6 +51,10 @@ function climaActual() {
         console.log(ParametroPais)
         var ParamentroNubosidad=data.list[0].weather[0].description;
         console.log (ParamentroNubosidad)
+        var dia=data.list[0].dt_txt;
+
+        /*console.log(dia)*/
+
 
         temperatura.innerHTML=ParametoTemp+'°C';
         viento.innerHTML=ParametroViento+'Km/h'
@@ -62,7 +66,33 @@ function climaActual() {
         lluvia.innerHTML=ParametroLLuvia+'%'
         ciudad.innerHTML=ParametroCiudad +','+ ParametroPais
         nuvosidad.innerHTML=ParamentroNubosidad;
-        fecha.innerHTML=ParametroFecha;
+        
+        const Cadenafecha = dia ;
+
+        const dias = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Satuday',
+        ]
+
+        const DiaNumero=new Date(Cadenafecha).getDay();
+        const NombreDia=dias[DiaNumero];
+         
+        console.log (NombreDia)
+
+        console.log (dia)
+
+        fecha.innerHTML=NombreDia;
+
+        var hoy = new Date()
+        var hora = hoy.getHours()+':'+(hoy.getMinutes()+1)
+        console.log (hora)
+
+        fecha.innerHTML=NombreDia+','+' '+hora;
     })
     
 }

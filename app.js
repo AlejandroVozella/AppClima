@@ -2,8 +2,9 @@
 
 
 /*Definicion de Variables para traer id y clases del html*/
-var boton = document.querySelector('#btn-buscar');
-var busquedaCiudad = document.querySelector('#inputCiudad');
+
+var boton = document.querySelector('.botonbuscar');
+var busqueda = document.querySelector('#inputCiudad');
 var temperatura=document.querySelector('#temperatura');
 var viento=document.querySelector('#viento');
 var sunrise=document.querySelector('#sunrise');
@@ -11,13 +12,18 @@ var sunset=document.querySelector('#sunset');
 var humedad =document.querySelector('#humedad');
 var visibilidad=document.querySelector('#visibilidad');
 
+console.log(busqueda.value);
 
-boton.addEventListener('click',climaActual())
+
+
+boton.addEventListener('click' , climaActual());
+/*boton.addEventListener('click',climaActual());*/
 
 
 
 function climaActual() {
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Rosario&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
+    console.log(busqueda.value)
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q='+busqueda.value+'&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
     .then(Response => Response.json())
     .then (data => {
         console.log(data);
@@ -28,18 +34,18 @@ function climaActual() {
 
         /*Comienzo Amanecer*/
         var ParametroAmanecer=data.city.sunrise;
-        var AmanecerFecha=new Date(ParametroAmanecer*1000)
+        var AmanecerFecha=new Date(ParametroAmanecer*1000);
         var AmanecerHora=AmanecerFecha.getHours();
         var AmanecerMinutos=AmanecerFecha.getMinutes();
-        console.log (ParametroAmanecer)
+        console.log (ParametroAmanecer);
         /*Fin Amanecer*/
 
         /*Comienzo Atardecer*/
         var ParametroAtardecer=data.city.sunset;
-        var AFecha=new Date(ParametroAtardecer*1000)
+        var AFecha=new Date(ParametroAtardecer*1000);
         var AtardecerHora=AFecha.getHours();
         var AtardecerMinutos=AFecha.getMinutes();
-        console.log(ParametroAtardecer)
+        console.log(ParametroAtardecer);
         /*Fin Atardecer*/
 
         var ParametroHumedad=data.list[0].main.humidity;
@@ -64,9 +70,18 @@ function climaActual() {
         console.log(ParametroPais)
         var ParamentroNubosidad=data.list[0].weather[0].description;
         console.log (ParamentroNubosidad)
-        var dia=data.list[0].dt_txt;
+        var dia=data.list[0].dt;
 
-        /*console.log(dia)*/
+        console.log(dia)
+
+        /*Latitud y Longitu*/
+
+        var lat = data.city.coord.lat;
+        console.log(lat);
+        var lon = data.city.coord.lon;
+        console.log(lon);
+
+        
 
 
         temperatura.innerHTML=ParametoTemp+'°C';
@@ -92,26 +107,58 @@ function climaActual() {
             'Satuday',
         ]
 
-        const DiaNumero=new Date(Cadenafecha).getDay();
+        const DiaNumero=new Date(Cadenafecha*1000).getDay();
         const NombreDia=dias[DiaNumero];
          
-        console.log (NombreDia)
+        console.log (NombreDia);
 
-        console.log (dia)
+        console.log (dia);
 
         fecha.innerHTML=NombreDia;
 
-        var hoy = new Date()
-        var hora = hoy.getHours()+':'+(hoy.getMinutes()+1)
-        console.log (hora)
+        var hoy = new Date();
+        var hora = hoy.getHours()+':'+(hoy.getMinutes()+1);
+        console.log (hora);
 
         fecha.innerHTML=NombreDia+','+' '+hora;
+
+        climaSieteDias(lat,lon);
     })
+    .catch(error => alert("No existe la ciudad o no se encuentra registrado en la API"));
+    /*.catch (error => alert("Ciudad No Encontrada"));*/
     
 }
 
+function climaSieteDias(lat, lon){
+    fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.daily);
 
-fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=-32.94&lon=-60.63&daily&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
+        arreglodias=data.daily;
+
+        console.log(arreglodias);
+
+        arreglodias.pop();
+
+        console.log(arreglodias)
+
+        arreglodias.forEach(function(dayInfo, index) {
+
+            let gradoHoy = document.querySelector('#grados'+index);
+            /*console.log(gradoHoy)*/
+            let grado = (dayInfo.temp.day).toString(); 
+            gradoHoy.innerHTML = grado + '°C';
+            console.log(gradoHoy);
+        })
+    })
+}
+
+
+/*Prueba de Inertar los Datos en los dias de la semana*/
+/*-32.94&lon=-60.63*/
+
+/* fetch ('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&daily&units=metric&appid=2a46d3e788ed20e6df81b683111a2243')
  .then (Response=>Response.json())
  .then (data => {
      console.log(data)
@@ -128,19 +175,19 @@ fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=-32.94&lon=-60.63&da
      console.log (data.daily[5].temp.day)
      console.log (data.daily[6].temp.day)
 
-     gradoss.innerHTML=data.daily[0].temp.day+'°C'
-     gradosm.innerHTML=data.daily[1].temp.day+'°C'
-     gradost.innerHTML=data.daily[2].temp.day+'°C'
-     gradosw.innerHTML=data.daily[3].temp.day+'°C'
-     gradosth.innerHTML=data.daily[4].temp.day+'°C'
-     gradosf.innerHTML=data.daily[5].temp.day+'°C'
-     gradossa.innerHTML=data.daily[6].temp.day+'°C'
+     grados0.innerHTML=data.daily[0].temp.day+'°C'
+     grados1.innerHTML=data.daily[1].temp.day+'°C'
+     grados2.innerHTML=data.daily[2].temp.day+'°C'
+     grados3.innerHTML=data.daily[3].temp.day+'°C'
+     grados4.innerHTML=data.daily[4].temp.day+'°C'
+     grados5.innerHTML=data.daily[5].temp.day+'°C'
+     grados6.innerHTML=data.daily[6].temp.day+'°C'
 
      ArrayDay.forEach(function(valor,indice,ArrayDay) {
          console.log(valor , indice);
          
      });
      
- })   
+ }) */
 
 
